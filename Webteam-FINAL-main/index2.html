@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블록체인 역사</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .section {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      .event-block {
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .event-block img {
+        width: 80px;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .event-block a {
+        color: #1976d2;
+        text-decoration: underline;
+      }
+
+      .controls {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      .controls button {
+        padding: 10px 16px;
+        font-size: 16px;
+        margin: 0 10px;
+        cursor: pointer;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 6px;
+      }
+
+      .controls button:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Blockchain</div>
+      <ul class="nav-links">
+        <li><a href="index.html">소개</a></li>
+        <li><a href="demo.html">구조</a></li>
+        <li><a href="tech.html">기술</a></li>
+        <li><a href="usage.html">활용</a></li>
+        <li><a href="about.html">제작정보</a></li>
+      </ul>
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <h1>🕰️ 블록체인 역사</h1>
+      <div class="controls">
+        <button onclick="addBlock()">📜 다음 사건 보기</button>
+        <button onclick="resetBlocks()">🔄 초기화</button>
+      </div>
+      <div id="historyContainer"></div>
+    </section>
+
+    <script>
+      const events = [
+        {
+          year: '2008년',
+          title: '비트코인 백서 발표',
+          desc: '사토시 나카모토가 블록체인 개념을 담은 논문 발표',
+          image: 'image/bitcoin.png',
+          link: 'https://blog.mexc.com/ko/who-is-satoshi-nakamoto/',
+        },
+        {
+          year: '2009년',
+          title: '비트코인 첫 거래',
+          desc: '실제로 비트코인을 채굴하고 거래가 시작됨',
+          image: 'image/bitcoin.png',
+          link: 'https://kr.cointelegraph.com/learn/articles/what-is-bitcoin',
+        },
+        {
+          year: '2015년',
+          title: '이더리움 등장',
+          desc: '스마트 계약이 가능한 블록체인 플랫폼 출현',
+          image: 'image/ethereum.png',
+          link: 'https://www.samsungsds.com/kr/insights/finance_series_ethereum.html',
+        },
+        {
+          year: '2020년 이후',
+          title: 'NFT, Web3 확산',
+          desc: '블록체인이 다양한 분야로 확장됨',
+          image: 'image/nft.png',
+          link: 'https://shindonga.donga.com/economy/article/all/13/3295096/1',
+        },
+      ]
+
+      let currentIndex = 0
+
+      function addBlock() {
+        if (currentIndex >= events.length) return
+
+        const event = events[currentIndex]
+        const container = document.getElementById('historyContainer')
+
+        const block = document.createElement('div')
+        block.className = 'event-block'
+        block.innerHTML = `
+          <img src="${event.image}" alt="${event.title}" />
+          <p><strong>연도:</strong> ${event.year}</p>
+          <p><strong>사건:</strong> <a href="${event.link}" target="_blank">${event.title}</a></p>
+          <p><strong>설명:</strong> ${event.desc}</p>
+        `
+        container.appendChild(block)
+        currentIndex++
+      }
+
+      function resetBlocks() {
+        document.getElementById('historyContainer').innerHTML = ''
+        currentIndex = 0
+      }
+    </script>
+    <footer>© 2025 블록체인 웹사이트 - 소개</footer>
+  </body>
+</html>

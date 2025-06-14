@@ -1,0 +1,324 @@
+/* styles.css */
+
+:root {
+  --main-bg: #f4f6ff;
+  --card-bg: #ffffff;
+  --primary-color: #2c3e50;
+  --accent-color: #007bff;
+  --light-gray: #dfe6e9;
+  --dark-bg: #1e1e2f;
+  --text-light: #f1f1f1;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Pretendard', sans-serif;
+  background: var(--main-bg);
+  color: var(--primary-color);
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--accent-color);
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+.section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  background: var(--card-bg);
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.section h1,
+.section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-size: 1rem;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.responsive-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+.box {
+  flex: 1 1 240px;
+  background: var(--accent-color);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.box:hover {
+  background: #0056b3;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 300px;
+  background-color: #ffffff;
+  border: 1px solid var(--light-gray);
+  margin-top: 1.5rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* 반응형 메뉴 */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--primary-color);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+/* demo.html 전용 강화 스타일 */
+.demo-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #f0f4f8, #e3effd);
+  text-align: center;
+}
+
+.demo-section h2 {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.demo-section p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: 16px;
+  background-color: var(--card-bg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+canvas {
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  transition: box-shadow 0.3s ease;
+  width: 700px;
+  max-width: 100%;
+  height: auto;
+}
+
+canvas:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 다크 모드 지원 */
+body.dark-mode {
+  background: var(--dark-bg);
+  color: var(--text-light);
+}
+
+body.dark-mode .section,
+body.dark-mode .card,
+body.dark-mode .box {
+  background: #2c2c3e;
+  color: var(--text-light);
+}
+
+body.dark-mode .navbar,
+body.dark-mode footer {
+  background-color: #121220;
+}
+
+#team {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#team li {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.button-usage li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.button-usage .text {
+  display: inline;
+}
+
+.button-usage .btn {
+  margin-left: 10px;
+}
+.button-usage .btn {
+  padding: 6px 12px;
+  background-color: #2c3e50;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px; /* 모서리 둥글게 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+}
+
+.button-usage .btn:hover {
+  background-color: #2c3e50;
+  transform: translateY(-2px);
+}
+.popup-overlay {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 어두운 배경 */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow: auto;
+  position: relative;
+}
+
+.popup-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.blockchain_structure-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

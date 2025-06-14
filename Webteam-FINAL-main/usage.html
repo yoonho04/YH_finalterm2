@@ -1,0 +1,178 @@
+<!-- usage.html -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블록체인 활용</title>
+    <script
+      type="text/javascript"
+      nonce="XOJ0BVE+zr3qdJZKBBAaLFbFzesxhK/xP1QmLnOdycs="
+      src="//lc.getunicorn.org?type=base-script&amp;request-id=821"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <style>
+      /* 팝업 스타일 (추가) */
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup-content {
+        position: relative;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 90%;
+        max-height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .popup-content img {
+        max-width: 100%;
+        max-height: 70vh;
+        border-radius: 6px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .popup-nav {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .popup-nav button {
+        padding: 8px 12px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .popup-nav button:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Blockchain</div>
+      <ul class="nav-links">
+        <li><a href="index.html">소개</a></li>
+        <li><a href="demo.html">구조</a></li>
+        <li><a href="tech.html">기술</a></li>
+        <li><a href="usage.html" class="active">활용</a></li>
+        <li><a href="about.html">제작정보</a></li>
+      </ul>
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+
+    <section class="section">
+      <h1>블록체인의 주요 활용 분야</h1>
+      <ul class="button-usage">
+        <li>
+          <span class="text"
+            >금융: 암호화폐, 국경 간 결제, 탈중앙 금융(DeFi)</span
+          >
+          <button class="btn" onclick="openPopup('image/Blockchain.jpg')">
+            사진1
+          </button>
+        </li>
+        <li>
+          <span class="text">물류: 공급망 추적, 상품 진위 확인</span>
+          <button class="btn" onclick="openPopup('image/Blockchain2.png')">
+            사진2
+          </button>
+        </li>
+        <li>
+          <span class="text">의료: 환자 기록 공유 및 관리</span>
+          <button class="btn" onclick="openPopup('image/Blockchain3.png')">
+            사진3
+          </button>
+        </li>
+        <li>
+          <span class="text">부동산: 등기 및 거래 이력 관리</span>
+          <button class="btn" onclick="openPopup('image/Blockchain4.jpg')">
+            사진4
+          </button>
+        </li>
+        <li>
+          <span class="text">예술/콘텐츠: NFT를 통한 디지털 자산 인증</span>
+          <button class="btn" onclick="openPopup('image/Blockchain5.jpg')">
+            사진5
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 팝업 추가 -->
+    <div id="popup" class="popup-overlay">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <img id="popup-img" src="" alt="설명 이미지" />
+        <div class="popup-nav">
+          <button onclick="prevImage()">← 이전</button>
+          <button onclick="nextImage()">다음 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스크립트 -->
+    <script>
+      const imagePaths = [
+        "image/Blockchain.jpg",
+        "image/Blockchain2.png",
+        "image/Blockchain3.png",
+        "image/Blockchain4.jpg",
+        "image/Blockchain5.jpg"
+      ];
+      let currentIndex = 0;
+
+      function openPopup(imagePath) {
+        currentIndex = imagePaths.indexOf(imagePath);
+        document.getElementById('popup-img').src = imagePaths[currentIndex];
+        document.getElementById('popup').style.display = 'flex';
+      }
+
+      function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % imagePaths.length;
+        document.getElementById('popup-img').src = imagePaths[currentIndex];
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + imagePaths.length) % imagePaths.length;
+        document.getElementById('popup-img').src = imagePaths[currentIndex];
+      }
+    </script>
+
+    <footer>© 2025 블록체인 웹사이트 - 활용</footer>
+  </body>
+</html>
